@@ -29,12 +29,12 @@ Let's get this thing running:
 mvn jetty:run
 ```
 
-The root of all configuration starts in the `src/main/webapp/WEB-INF/web.xml` file.  The web.xml uses the `ContextLoaderListener` to initialize the Spring application context via `@Configuration` annotation scanning (the `contextClass` and `contextConfigLocation` context-params).  In this case, the web.xml's `contextConfigLocation` context-param directs the `ContextLoaderListener` to load the main/parent application context in the annotated class `com.willvuong.bootstrapper.config.AppConfiguration`. 
+The root of all configuration starts in the `src/main/webapp/WEB-INF/web.xml` file.  The web.xml uses the `ContextLoaderListener` to initialize the Spring application context via `@Configuration` annotation scanning (the `contextClass` and `contextConfigLocation` context-params).  In this case, the web.xml's `contextConfigLocation` context-param directs the `ContextLoaderListener` to load the main/parent application context in the annotated class `jary.bootstrap.config.AppConfiguration`.
 
 ``` xml
 <context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.willvuong.bootstrapper.config.AppConfiguration</param-value>
+		<param-value>jary.bootstrap.config.AppConfiguration</param-value>
 </context-param>
 ```
 
@@ -52,22 +52,22 @@ The Spring MVC context is configured via the `DispatcherServlet`'s `contextConfi
         </init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>com.willvuong.bootstrapper.mvcconfig.MvcConfiguration</param-value>
+			<param-value>jary.bootstrap.config.MvcConfiguration</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 </servlet>
 ```
 
-The `MvcConfiguration` class configures the Spring MVC framework with some "classic" defaults and already has a `@ComponentScan` annotation for mapping annotated `@Controller` classes in the `com.willvuong.bootstrapper.controllers` package.
+The `MvcConfiguration` class configures the Spring MVC framework with some "classic" defaults and already has a `@ComponentScan` annotation for mapping annotated `@Controller` classes in the `jary.bootstrap.controllers` package.
 
 Let's talk about the "classic" defaults:
 * The `DispatcherServlet` is configured to map to all requests within the servlet context via `/*`.
 * `MvcConfiguration` is configured to route all `/resources/**` requests to static resources located in `src/main/webapp/resources`.
 * All unmatched requests are finally routed to the [default servlet handler](http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.html#configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer)).
 
-If you paid attention to the console output during `mvn jetty:run`, you might have seen a few lines that begin with "autoconfiguring blah blah...".  These log statements originate from the class  `com.willvuong.bootstrapper.mvcconfig.ServletContextAutoConfigure` which does some additional configuration of the servlet context.
-* A utility filter `com.willvuong.bootstrapper.filter.RequestMDCServletFilter` is added to the servlet context.  Its main purpose is to set details from the current `HttpServletRequest` (request URL, request URI, and generate a unique logging ID for the scope of the current request) into the SLF4J MDC.
+If you paid attention to the console output during `mvn jetty:run`, you might have seen a few lines that begin with "autoconfiguring blah blah...".  These log statements originate from the class  `jary.bootstrap.mvcconfig.ServletContextAutoConfigure` which does some additional configuration of the servlet context.
+* A utility filter `jary.bootstrap.filter.RequestMDCServletFilter` is added to the servlet context.  Its main purpose is to set details from the current `HttpServletRequest` (request URL, request URI, and generate a unique logging ID for the scope of the current request) into the SLF4J MDC.
 * Configure SiteMesh to decorate all responses except for static resources in `/resources/**`.  SiteMesh is configured by `src/main/webapp/WEB-INF/decorators.xml`.
 * Configure Metrics instrumentation and reporting via Metrics servlets.
 
@@ -77,7 +77,7 @@ Another thing to pay attention to is the Logback configuration (via `src/main/re
 * Log messages are very detailed and include the current request URI and request ID.  This helps to map request handlers to log messages.
 
 Open up a web browser and navigate to `localhost:8080` and click on the currently running servlet context (if you didn't change the pom.xml artifactId yet, it will be "spring-mvc-bootstrap-angularjs-starter").
-* The web page you should see is mapped by controller `com.willvuong.bootstrapper.controllers.HomeController` which all it does is forward to `/WEB-INF/views/angular-index.jsp`.
+* The web page you should see is mapped by controller `HomeController` which all it does is forward to `/WEB-INF/views/angular-index.jsp`.
 * JSP `/WEB-INF/views/angular-index.jsp` is located at `src/main/webapp/WEB-INF/views/angular-index.jsp`.  It references JavaScript and Angular resources in `/resources/` (`src/main/webapp/resources`).
 * The response is decorated by SiteMesh by `src/main/webapp/WEB-INF/decorators/default.jsp`.  This JSP decorator wraps angular-index.jsp in Bootstrap CSS styling in `/resources/` (`src/main/webapp/resources`).
 
