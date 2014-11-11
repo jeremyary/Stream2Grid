@@ -18,7 +18,7 @@ rule sessions to persist trends so that they may be further searched against the
  - EC2 Instances for Hazelcast & RabbitMQ
 
 ## Getting Started:
-All you need to do is clone the project and use the command `mvn jetty:run` to start up the app.
+All you need to do is clone the project and use the command `mvn jetty:run` to start up the app. Afterwards, you can find the app running at `http://localhost:8080/Stream2Grid`.
 
 ## Current State:
 All basic elements have been put into place. From here, rule sessions can be grown to further analyze Status data. The
