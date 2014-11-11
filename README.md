@@ -18,8 +18,7 @@ rule sessions to persist trends so that they may be further searched against the
  - EC2 Instances for Hazelcast & RabbitMQ
 
 ## Getting Started:
-All you need to do is clone the project and use the command `mvn jetty:run` to start up the app. I've also launched the
-app to Heroku at TODO.
+All you need to do is clone the project and use the command `mvn jetty:run` to start up the app.
 
 ## Current State:
 All basic elements have been put into place. From here, rule sessions can be grown to further analyze Status data. The
