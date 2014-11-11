@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Stream2Grid" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta charset="utf-8" />
+  <meta name="author" content="jary" />
+  <title>Stream2Grid</title>
+  <meta name="description" content="Twitter stream to in-memory data grid for rules trending">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <!-- add styles -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+  <!-- add javascripts -->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <!-- logo -->
+    <a href="#!"><img class="logo" src="images/logo.png" /></a>
+
+    <!-- navigation menu -->
+    <nav>
+      <ul>
+        <li><a id="homeBtn" href="#!" ng-class="{activeSmall:part == 'home'}">Home</a></li>
+        <li><a id="aboutBtn" href="#!/about" ng-class="{activeSmall:part == 'about'}">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- main content -->
+<div style="position:relative">
+  <div style="width:100%" ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
+</div>
+
+</body>
+</html>

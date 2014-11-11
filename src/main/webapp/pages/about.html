@@ -1,0 +1,140 @@
+<div style="width:100%">
+    <div class="paddRow aboutRow">
+        <div class="wrap">
+            <div class="head">About This Project</div>
+            <p>Stream2Grid is a proof-of-concept that takes a small live feed from Twitter's status sample stream &amp; feeds that information into
+            various queues for processing. The information is then parsed & placed into an in-memory data grid linked to a rules engine session that
+            identifies trending hashtags and users across the stream sample.</p>
+        </div>
+    </div>
+
+    <div style="background-color:#f5f5f5">
+        <div class="wrap about">
+            <div class="head">&nbsp;</div>
+
+            <section>
+                <div class="image flLeft">
+                    <img src="images/twitter.png" style="height: 300px; width: 300px;" class="abIcon">
+                </div>
+                <div class="txt flRight">
+                    <h2 class="subHead">Twitter API</h2>
+                    <p>The Twitter API is used to collect status updates from the provided "garden hose" sample feed. Twitter4J API wrapper
+                    is used to simplify interacting with the API layer.</p></div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flRight">
+                    <img src="images/rabbitmq.png" style="height: 300px; width: 300px;" class="abIcon">
+                </div>
+                <div class="txt flLeft">
+                    <h2 class="subHead">RabbitMQ</h2>
+                    <p>RabbitMQ queues are used to temporarily hold status update info by category until they can be marshalled and
+                        stored in the data grid. Given the speed of the live Twitter update stream, this step prevents latency and stalling
+                        of API queries.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flLeft">
+                    <img src="images/hazelcast.png" style="height: 250px; width: 300px;" class="abIcon">
+                </div>
+                <div class="txt flRight">
+                    <h2 class="subHead">Hazelcast</h2>
+                    <p>Hazelcast data grid is used to store status, hashtag, and user info in memory for rules trend processing. Key-Value
+                    stored are used to track users, hashtags, delete requests, and more, all coming from the live stream.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flRight">
+                    <img src="images/drools.png" class="abIcon">
+                </div>
+                <div class="txt flLeft">
+                    <h2 class="subHead">Drools Rules Engine</h2>
+                    <p>Expert (core engine) module is utilized to generate stateful sessions which parse trending information from the stream-store data grid.
+                    The rules base can be expanded to better earmark points of interest which could then be directly queried against the Twitter API to get
+                    more detailed results and better trend analysis.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flLeft">
+                    <img src="images/angularjs.png" style="height: 300px; width: 300px;" class="abIcon">
+                </div>
+                <div class="txt flRight">
+                    <h2 class="subHead">AngularJS</h2>
+                    <p>AngularJS is used to serve up the responsive front-end presentation. This is my first go with the framework and I'm definitely a fan.
+                    The routing is on par with my expectations coming from BackBone, but the HTML integration is much sleeker than templating.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flRight">
+                    <img src="images/aws.png" class="abIcon">
+                </div>
+                <div class="txt flLeft">
+                    <h2 class="subHead">Amazon EC2</h2>
+                    <p>EC2 instances are used for hosting the RabbitMQ & Hazelcast servers. An EBS-backed medium sized Ubuntu server hosts both
+                    services. This could easily be spun up to accomodate larger stream loads by implementing more nodes and placing an EC2 load
+                    balancer in front of each cluster.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flLeft">
+                    <img src="images/spring.png" class="abIcon">
+                </div>
+                <div class="txt flRight">
+                    <h2 class="subHead">Spring Framework</h2>
+                    <p>Spring MVC, AMQP, & Web are in use. It's a Java project...chances are always good Spring has their hand in the stack
+                    somewhere, amirite?</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flRight">
+                    <img src="images/maven.png" class="abIcon">
+                </div>
+                <div class="txt flLeft">
+                    <h2 class="subHead">Maven</h2>
+                    <p>Maven is used for project dependency management. Nobody likes downloading or packaging jars. That's evil. We don't like to
+                    do evil things, we just fight local repo caching instead.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flLeft">
+                    <img src="images/slf4j.png" class="abIcon">
+                </div>
+                <div class="txt flRight">
+                    <h2 class="subHead">SLF4J</h2>
+                    <p>Logging via custom annotation injecting a SLF4J logger into classes. Nothing fancy for this project such as rollover logging
+                    or multiple appenders, but the avenues are there should I choose to expand the project.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+            <section>
+                <div class="image flRight">
+                    <img src="images/mockito.png" class="abIcon">
+                </div>
+                <div class="txt flLeft">
+                    <h2 class="subHead" style="margin-top: 20px;">Mockito</h2>
+                    <p>Mockito testing framework is used for all mock unit tests and integration stubbing. If you've used one, you've used most, but
+                    I'm pretty fond of Mockito - the documentation is clean and functionality slightly more extensive than others, but static mocking
+                    remains an issue, for which I've become accustomed to EasyMock and PowerMock to overcome.</p>
+                </div>
+                <div style="clear:both"></div>
+            </section>
+
+        </div>
+    </div>
+</div>
