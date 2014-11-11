@@ -39,6 +39,5 @@ I can be reached at:
 
 ![about](http://i.imgur.com/ndy9Tlv.png)
 
-mobile-friendly, too!
 ![mobile](http://i.imgur.com/DuIY2qn.png)
 
