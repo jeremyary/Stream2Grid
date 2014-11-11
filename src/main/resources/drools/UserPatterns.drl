@@ -9,7 +9,7 @@ global jary.drools.RuleDelegate delegate
 // data for consumption
 rule "frequent user"
 when
-    $user : User ( statusList.size() > 1 )
+    $user : User ( statusList != null, statusList.size() > 1 )
 then
     delegate.handleTrend($user);
 end

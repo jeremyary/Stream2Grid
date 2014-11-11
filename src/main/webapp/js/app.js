@@ -12,14 +12,14 @@ var app = angular.module('Stream2Grid', []).
         when('/', {
           templateUrl: 'pages/index.html',
           controller: HomeCtrl ,
-          activetab: 'projects'
+          activetab: 'home'
         }).
-        when('/project/:projectId', {
+        when('/kickoff', {
           templateUrl: function (params) {
-              return 'pages/' + params.projectId + '.html';
+              return 'pages/kickoff.html';
           },
           controller: ProjectCtrl,
-          activetab: 'projects'
+          activetab: 'none'
         }).
         when('/about', {
           templateUrl: 'pages/about.html',

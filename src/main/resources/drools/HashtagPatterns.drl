@@ -9,7 +9,7 @@ global jary.drools.RuleDelegate delegate
 // data for consumption
 rule "trending hashtag"
 when
-    $tag : Hashtag ( statusList.size() > 1 )
+    $tag : Hashtag ( statusList != null, statusList.size() > 1 )
 then
     delegate.handleTrend($tag);
 end

@@ -1,5 +1,6 @@
-# Stream2Grid, a workable implementation of StreamToGrid with presentation layer
+# Stream2Grid
 ============
+a workable implementation of StreamToGrid with presentation layer
 
 ## Functionality:
 

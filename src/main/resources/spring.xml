@@ -60,7 +60,7 @@
     <rabbit:queue name="${rabbit.queues.twitter.stream.delete}" durable="true"/>
     <rabbit:queue name="${rabbit.queues.twitter.stream.scrub}" durable="true"/>
 
-    <rabbit:listener-container concurrency="75" connection-factory="connectionFactory" error-handler="amqpErrorHandler">
+    <rabbit:listener-container concurrency="50" connection-factory="connectionFactory" error-handler="amqpErrorHandler">
         <rabbit:listener queue-names="${rabbit.queues.twitter.stream.status}" ref="statusMessageHandler"
                          method="handle"/>
     </rabbit:listener-container>
