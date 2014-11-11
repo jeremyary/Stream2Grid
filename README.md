@@ -31,3 +31,14 @@ I can be reached at:
  - http://twitter.com/jeremyary
  - http://linkedIn.com/in/jeremyary
  - http://rulestech.net
+ 
+## Screenshots:
+![landing page](http://i.imgur.com/EATy5pw.png)
+
+![results] (http://i.imgur.com/nIMDEeX.png)
+
+![about](http://i.imgur.com/ndy9Tlv.png)
+
+mobile-friendly, too!
+![mobile](http://i.imgur.com/DuIY2qn.png)
+
